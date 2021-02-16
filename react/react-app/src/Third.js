@@ -6,7 +6,7 @@ class Third extends Component {
       <div>
         <h2>GOT QUESTIONS?</h2>
         <p>Don't worry, me too.
-        Link to repo: <a href="https://github.com/JokerFunny/fronendLabs"></a>.
+        Link to repo: <a href="https://github.com/JokerFunny/front-end">REPO</a>.
         </p>
         <p>Best regards, Danylo</p>
       </div>
