@@ -1,7 +1,8 @@
 {
   "homepage": "https://JokerFunny.github.io/front-end",
   "name": "front-end",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/JokerFunny/front-end/tree/main/react/react-app"
@@ -9,8 +10,9 @@
   "license": "MIT",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "webpack-dev-server --open"
+    "deploy": "gh-pages -d dist -b master",
+    "start": "webpack-dev-server --open",
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "css-loader": "^5.0.2",

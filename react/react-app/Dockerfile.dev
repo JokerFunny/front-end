@@ -6,8 +6,8 @@ RUN npm i webpack-cli @webpack-cli/init
 
 COPY package.json /app
 
-RUN yarn install
+RUN npm install
 
 COPY . /app
 
-CMD ["yarn", "run", "start"]
+CMD ["npm", "start"]
