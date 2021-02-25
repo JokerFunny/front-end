@@ -2,6 +2,8 @@ FROM node:alpine
 
 WORKDIR /app
 
+RUN npm i webpack-cli @webpack-cli/init
+
 COPY package.json /app
 
 RUN yarn install
