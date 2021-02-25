@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Third extends Component {
   render() {
     return (
-      <div>
+      <div class='container-fluid'>
         <h2>GOT QUESTIONS?</h2>
         <p>Don't worry, me too.
         Link to repo: <a href="https://github.com/JokerFunny/front-end">REPO</a>.
@@ -13,5 +13,5 @@ class Third extends Component {
     );
   }
 }
- 
-export default Third;
+
+export { Third };

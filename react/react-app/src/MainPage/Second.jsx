@@ -8,7 +8,7 @@ const images = [
 class Second extends Component {
   render() {
     return (
-      <div>
+      <div class='container-fluid'>
         <h2>Second tab of my perfect app</h2>
         <p>These are the reasons why I love front-end development:</p>
         <ol>
@@ -17,7 +17,7 @@ class Second extends Component {
           <ol>-</ol>
           <ol>-</ol>
           <ol>-</ol>
-          <ol>Funny memes:</ol>
+          <ol>- Funny memes:</ol>
           {images.map(function(imageProps) {
             return (
               <ol key={ imageProps.src }>
@@ -33,4 +33,4 @@ class Second extends Component {
   }
 }
  
-export default Second;
+export { Second };
