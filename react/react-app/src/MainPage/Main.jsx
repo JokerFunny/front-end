@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Router, Route, Link } from "react-router-dom";
-import { First, Second, Third } from "@/MainPage";
-import { AdminPage, LoginPage } from '@/Auth';
-import { history, Role } from '@/Auth/_helpers';
-import { authenticationService } from '@/Auth/_services';
-import { PrivateRoute } from '@/Auth/_components';
+import { Router, Route, Link, Switch, HashRouter, NavLink } from "react-router-dom";
+import { First, Second, Third } from "../MainPage";
+import { AdminPage, LoginPage } from '../Auth';
+import { history, Role } from '../Auth/_helpers';
+import { authenticationService } from '../Auth/_services';
+import { PrivateRoute } from '../Auth/_components';
 
 class Main extends Component {
   constructor(props) {
@@ -49,17 +49,18 @@ class Main extends Component {
           <div className="jumbotron">
             <div className="container-fluid">
               <div className="row">
-                <PrivateRoute exact path="/" component={First} />
-                <PrivateRoute exact path="/second" component={Second} />
-                <PrivateRoute exact path="/third" component={Third} />
-                <PrivateRoute path="/admin" roles={[Role.Admin]} component={AdminPage} />
-                <Route path="/login" component={LoginPage} />
+                <Switch>
+                  <PrivateRoute exact path="/" component={First} />
+                  <PrivateRoute exact path="/second" component={Second} />
+                  <PrivateRoute exact path="/third" component={Third} />
+                  <PrivateRoute path="/admin" roles={[Role.Admin]} component={AdminPage} />
+                  <Route path="/login" component={LoginPage} />
+                </Switch>
               </div>
             </div>
           </div>
         </div>
-      </Router>
-      
+      </Router>      
     );
   }
 }

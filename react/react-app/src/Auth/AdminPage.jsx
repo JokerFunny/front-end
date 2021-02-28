@@ -1,5 +1,5 @@
 import React from 'react';
-import { userService } from '@/Auth/_services';
+import { userService } from '../Auth/_services';
 
 class AdminPage extends React.Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class AdminPage extends React.Component {
     render() {
         const { users } = this.state;
         return (
-            <div class='container-fluid'>
+            <div className='container-fluid'>
                 <h2>Admin</h2>
                 <p>This page for admin eyes only :)</p>
                 <div>

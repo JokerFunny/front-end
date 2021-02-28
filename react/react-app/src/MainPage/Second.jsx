@@ -8,7 +8,7 @@ const images = [
 class Second extends Component {
   render() {
     return (
-      <div class='container-fluid'>
+      <div className='container-fluid'>
         <h2>Second tab of my perfect app</h2>
         <p>These are the reasons why I love front-end development:</p>
         <ol>

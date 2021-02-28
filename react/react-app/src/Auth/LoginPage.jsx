@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { authenticationService } from '@/Auth/_services';
+import { authenticationService } from '../Auth/_services';
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -14,7 +14,6 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        console.log('huy');
         return (
             <div  className="col-md-6 offset-md-3">
                 <div className="alert alert-info">

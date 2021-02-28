@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { userService, authenticationService } from '@/Auth/_services';
+import { userService, authenticationService } from '../Auth/_services';
 
 class First extends Component {
   constructor(props) {
@@ -13,7 +13,8 @@ class First extends Component {
 
   componentDidMount() {
     const { currentUser } = this.state;
-    userService.getById(currentUser.id).then(userFromApi => this.setState({ userFromApi }));
+    if (currentUser != null)
+      userService.getById(currentUser.id).then(userFromApi => this.setState({ userFromApi }));
   }
 
   render() {
@@ -24,7 +25,7 @@ class First extends Component {
         <p>This is a test text for test REACT app. PLZ don`t bite me..</p>
 
         <p>You're logged in with React & JWT!!</p>
-        <p>Your role is: <strong>{currentUser.role}</strong>.</p>
+        <p>Your role is: <strong>{currentUser?.role ?? 'api fail to run'}</strong>.</p>
         <p>This page can be accessed by all authenticated users.</p>
         <div>
           Current user from secure api end point:
