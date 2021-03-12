@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/front-end/',
   /*
   ** Headers of the page
   */
