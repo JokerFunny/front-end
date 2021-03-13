@@ -3,7 +3,11 @@ import VueSocketIO from 'vue-socket.io';
 import store from '../store';
 import io from 'socket.io-client';
 
-const socketInstance = io('/', {
+const publicPath = process.env.NODE_ENV === 'production'
+  ? '/front-end/'
+  : '/';
+
+const socketInstance = io(publicPath, {
   transports: ['websocket', 'flashsocket', 'polling'],
   rejectUnauthorized: false,
   reconnection: true,

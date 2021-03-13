@@ -1,5 +1,7 @@
 module.exports = {
-  publicPath: '/front-end/',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/front-end/'
+    : '/',
   /*
   ** Headers of the page
   */
