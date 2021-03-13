@@ -1,0 +1,11 @@
+{
+  "name": "Nuxt.js PWA vuesockests",
+  "short_name": "Nuxt.js PWA",
+  "description": "Test app on Nuxt.js with sockets",
+  "icons": [],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#424242",
+  "lang": "en"
+}
