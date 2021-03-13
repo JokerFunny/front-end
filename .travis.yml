@@ -2,7 +2,9 @@
   node_js:
     - "node"
   cache: npm
-  script: npm run build
+  script: 
+    - cd .\vue\vueSockets\
+    - npm run build
   deploy:
     provider: pages
     skip_cleanup: true
