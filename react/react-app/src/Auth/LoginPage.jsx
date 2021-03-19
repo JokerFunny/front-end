@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { authenticationService } from '../Auth/_services';
@@ -11,6 +12,13 @@ class LoginPage extends React.Component {
         if (authenticationService.currentUserValue) { 
             this.props.history.push('/');
         }
+    }
+
+    onSuccess = () => { 
+        const {dispatch} = this.props;
+        dispatch({
+            type: 'user/LOAD_CURRENT_ACCOUNT',
+        });
     }
 
     render() {
@@ -42,7 +50,8 @@ class LoginPage extends React.Component {
                                     setSubmitting(false);
                                     setStatus(error);
                                 }
-                            );
+                            )
+                            .then(() => this.onSuccess());
                     }}
                     render={({ errors, status, touched, isSubmitting }) => (
                         <Form>
@@ -66,6 +75,7 @@ class LoginPage extends React.Component {
                                 <div className={'alert alert-danger'}>{status}</div>
                             }
                         </Form>
+                        
                     )}
                 />
             </div>
@@ -73,4 +83,4 @@ class LoginPage extends React.Component {
     }
 }
 
-export { LoginPage }; 
+export default connect() ( LoginPage );

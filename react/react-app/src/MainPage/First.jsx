@@ -1,37 +1,27 @@
+import { connect } from "react-redux";
 import React, { Component } from "react";
-import { userService, authenticationService } from '../Auth/_services';
 
 class First extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentUser: authenticationService.currentUserValue,
-      userFromApi: null
-    };
-  }
-
-  componentDidMount() {
-    const { currentUser } = this.state;
-    if (currentUser != null)
-      userService.getById(currentUser.id).then(userFromApi => this.setState({ userFromApi }));
-  }
 
   render() {
-    const { currentUser, userFromApi } = this.state;
+    const { user } = this.props;
     return (
       <div className="container-fluid">
         <h2>HELLO</h2>
         <p>This is a test text for test REACT app. PLZ don`t bite me..</p>
 
         <p>You're logged in with React & JWT!!</p>
-        <p>Your role is: <strong>{currentUser?.role ?? 'api fail to run'}</strong>.</p>
+        <p>Your id is: <strong>{user?.id ?? 'api fail to run'}</strong>.</p>
+        <p>Your firstName is: <strong>{user?.firstName ?? 'api fail to run'}</strong>.</p>
+        <p>Your lastName is: <strong>{user?.lastName ?? 'api fail to run'}</strong>.</p>
+        <p>Your role is: <strong>{user?.role ?? 'api fail to run'}</strong>.</p>
+        <p>Your username is: <strong>{user?.username ?? 'api fail to run'}</strong>.</p>
         <p>This page can be accessed by all authenticated users.</p>
         <div>
           Current user from secure api end point:
-              {userFromApi &&
+              {user &&
             <ul>
-              <li>{userFromApi.firstName} {userFromApi.lastName}</li>
+              <li>{user.firstName} {user.lastName}</li>
             </ul>
           }
         </div>
@@ -40,4 +30,6 @@ class First extends Component {
   }
 }
 
-export { First };
+export default connect(
+  ({user}) => ({user})
+) ( First );

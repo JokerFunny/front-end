@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Router, Route, Link, Switch, HashRouter, NavLink } from "react-router-dom";
-import { First, Second, Third } from "../MainPage";
-import { AdminPage, LoginPage } from '../Auth';
+import { Second, Third } from "../MainPage";
+import First from './First';
+import LoginPage from '../Auth/LoginPage'
+import { AdminPage } from '../Auth';
 import { history, Role } from '../Auth/_helpers';
 import { authenticationService } from '../Auth/_services';
 import { PrivateRoute } from '../Auth/_components';
@@ -11,7 +14,6 @@ class Main extends Component {
     super(props);
 
     this.state = {
-        currentUser: null,
         isAdmin: false
     };
   }
@@ -25,15 +27,23 @@ class Main extends Component {
 
   logout() {
     authenticationService.logout();
+
+    const {dispatch} = this.props;
+    dispatch({
+        type: 'user/LOGOUT',
+    });
+
     history.push('/login');
   }
 
   render() {
-    const { currentUser, isAdmin } = this.state;
+    const { isAdmin } = this.state;
+    const { user } = this.props;
+    console.log(user);
     return (
       <Router history={history}>
         <div>
-          {currentUser &&
+          {user.authorized &&
             <nav className="navbar navbar-expand navbar-dark bg-dark">
               <ul className="navbar-nav mr-auto">
                 <Link to="/" className="nav-item nav-link">Wonderfull first tab</Link>
@@ -42,7 +52,7 @@ class Main extends Component {
                 {isAdmin && <Link to="/admin" className="nav-item nav-link">Admin page, WTF</Link>}
               </ul>
               <ul className="navbar-nav">
-                <a onClick={this.logout} className="nav-item nav-link logoutToRight">Logout</a>
+                <a onClick={() => this.logout()} className="nav-item nav-link logoutToRight">Logout</a>
               </ul>
             </nav>
           }
@@ -65,4 +75,6 @@ class Main extends Component {
   }
 }
 
-export { Main };
+export default connect(
+  ({user}) => ({user})
+) ( Main );

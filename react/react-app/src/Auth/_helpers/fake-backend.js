@@ -57,7 +57,6 @@ export function configureFakeBackend() {
                 realFetch(url, opts).then(response => resolve(response));
 
                 // private helper functions
-
                 function ok(body) {
                     resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(body)) })
                 }
